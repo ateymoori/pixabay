@@ -14,7 +14,6 @@ import com.jakewharton.rxbinding2.widget.RxTextView
 import com.pixabay.R
 import com.pixabay.utils.Cons.Companion.ITEM_BUNDLE
 import com.pixabay.utils.entities.ImageModel
-import com.pixabay.utils.entities.ResponseModel
 import com.pixabay.utils.Cons.Companion.MIN_SEARCH_WORD_COUNT
 import com.pixabay.utils.Cons.Companion.SEARCH_DO_DELAY
 import com.pixabay.utils.models.ErrorIn
@@ -62,13 +61,19 @@ class DashboardFragment : Fragment(), ResultsAdapter.OnItemClick {
     }
 
     private fun initObservables() {
+
         viewModel.results.observe(this, Observer {
             when (it) {
                 is Loading -> {
+                    progress.visibility = View.VISIBLE
                 }
                 is ErrorIn -> {
+                    progress.visibility = View.GONE
                 }
-                is Success<*> -> showResults((it.data as List<ImageModel>))
+                is Success<*> -> {
+                    progress.visibility = View.GONE
+                    showResults((it.data as List<ImageModel>))
+                }
             }
         })
 

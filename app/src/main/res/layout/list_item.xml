@@ -72,7 +72,7 @@
         android:elevation="@dimen/_10sdp"
         android:text="AmirHossein Teymoori"
         android:id="@+id/username"
-        android:textColor="@color/almostWhite"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/avatar"
         app:layout_constraintStart_toEndOf="@+id/avatar"
         app:layout_constraintTop_toTopOf="@+id/avatar" />

@@ -57,18 +57,6 @@ fun <T : androidx.recyclerview.widget.RecyclerView.ViewHolder> T.listen(event: (
 }
 
 
-fun View.show() {
-    this.visibility = View.VISIBLE
-}
-
-fun View.hide() {
-    this.visibility = View.INVISIBLE
-}
-
-fun View.gone() {
-    this.visibility = View.GONE
-}
-
 
 // 8 sen and RM 10 example should return 00001000
 fun String.senPrice(  long: Int = 8): String {

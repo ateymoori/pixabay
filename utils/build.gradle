@@ -79,4 +79,6 @@ dependencies {
     api "androidx.navigation:navigation-fragment-ktx:2.1.0"
     api "androidx.navigation:navigation-ui-ktx:2.1.0"
 
+    api 'com.wang.avi:library:2.1.3'
+
 }

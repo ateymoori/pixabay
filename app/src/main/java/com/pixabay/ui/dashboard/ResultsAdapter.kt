@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.pixabay.R
 import com.pixabay.utils.entities.ImageModel
 import com.pixabay.utils.tools.listen
@@ -49,11 +50,13 @@ class ResultsAdapter @Inject constructor() :
         Glide.with(ctx).load(
             item.webformatURL
         ).placeholder(R.drawable.test)
+            .diskCacheStrategy( DiskCacheStrategy.ALL )
             .into(holder.img)
 
         Glide.with(ctx).load(
             item.userImageURL
         ).placeholder(R.drawable.ic_person_black)
+            .diskCacheStrategy( DiskCacheStrategy.ALL )
             .into(holder.avatar)
 
     }
