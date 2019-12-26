@@ -63,18 +63,19 @@ class DashboardFragment : Fragment(), ResultsAdapter.OnItemClick {
     private fun initObservables() {
 
         viewModel.results.observe(this, Observer {
-            when (it) {
-                is Loading -> {
-                    progress.visibility = View.VISIBLE
-                }
-                is ErrorIn -> {
-                    progress.visibility = View.GONE
-                }
-                is Success<*> -> {
-                    progress.visibility = View.GONE
-                    showResults((it.data as List<ImageModel>))
-                }
-            }
+            showResults(it )
+//            when (it) {
+//                is Loading -> {
+//                    progress.visibility = View.VISIBLE
+//                }
+//                is ErrorIn -> {
+//                    progress.visibility = View.GONE
+//                }
+//                is Success<*> -> {
+//                    progress.visibility = View.GONE
+//                    showResults((it.data as List<ImageModel>))
+//                }
+//            }
         })
 
         //do search when typing on search bar stopped automatically
@@ -83,7 +84,7 @@ class DashboardFragment : Fragment(), ResultsAdapter.OnItemClick {
             .debounce(SEARCH_DO_DELAY, TimeUnit.MILLISECONDS)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
-                viewModel.search(it.toString())
+                viewModel.searchNew(it.toString())
             }
     }
 

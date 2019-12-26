@@ -9,7 +9,7 @@ import javax.inject.Inject
 class RemoteRepo @Inject
 constructor(private val repoService: RestService) {
 
-    fun searchImages(word: String) =
+    suspend fun searchImages(word: String) =
         repoService.searchImage(
             key = Cons.API_KEY,
             image_type = IMAGES_TYPE,

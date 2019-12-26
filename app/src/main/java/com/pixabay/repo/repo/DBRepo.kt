@@ -13,7 +13,8 @@ constructor(private val imageDAO: ImagesDAO) {
             imageDAO.insertAll(images)
     }
 
-    fun search(word: String) = imageDAO.getImagesBySearchWord(word)
+      fun search(word: String) = imageDAO.getImagesBySearchWord(word)
+    // suspend fun searchNew(word: String) = imageDAO.getImagesBySearchWord(word)
 
 
 }

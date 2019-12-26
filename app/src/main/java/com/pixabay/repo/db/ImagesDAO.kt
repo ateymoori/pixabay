@@ -18,12 +18,11 @@ interface ImagesDAO {
     fun insertAll(images: List<ImageModel>)
 
     @Query("SELECT * FROM images WHERE searchWord = :word")
-    fun getImagesBySearchWord(word:String): Single<List<ImageModel>>
+    fun getImagesBySearchWord(word: String): List<ImageModel>
 
 
     @Query("SELECT * FROM images ")
-    fun getAll( ): Single<List<ImageModel>>
-
+    fun getAll(): Single<List<ImageModel>>
 
 
 }

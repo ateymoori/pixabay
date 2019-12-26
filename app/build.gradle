@@ -60,8 +60,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    kapt "com.google.dagger:dagger-compiler:2.24"
-    kapt "com.google.dagger:dagger-android-processor:2.24"
+    kapt "com.google.dagger:dagger-compiler:2.25.3"
+    kapt "com.google.dagger:dagger-android-processor:2.25.3"
 
     api 'com.github.bumptech.glide:glide:4.10.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
@@ -70,6 +70,8 @@ dependencies {
     api "android.arch.persistence.room:runtime:1.1.1"
     api "android.arch.persistence.room:rxjava2:1.1.1"
     kapt "android.arch.persistence.room:compiler:1.1.1"
+    api "androidx.room:room-ktx:2.2.3"
+
     annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
 
 

@@ -9,11 +9,18 @@ import retrofit2.http.*
 
 interface RestService {
 
+//    @GET("?")
+//    suspend fun searchImage(
+//        @Query("key") key: String,
+//        @Query("q") q: String,
+//        @Query("image_type") image_type: String
+//    ): Single<Response<ResponseModel>>
+
     @GET("?")
-    fun searchImage(
+    suspend fun searchImage(
         @Query("key") key: String,
         @Query("q") q: String,
         @Query("image_type") image_type: String
-    ): Single<Response<ResponseModel>>
+    ): ResponseModel
 
 }
