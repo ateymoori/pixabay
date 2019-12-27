@@ -1,6 +1,7 @@
 package com.pixabay.ui.dashboard
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -50,6 +51,7 @@ class DashboardFragment : Fragment(), ResultsAdapter.OnItemClick {
         AndroidSupportInjection.inject(this)
         viewModel =
             ViewModelProviders.of(this, viewModelFactory).get(DashboardViewModel::class.java)
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -62,20 +64,19 @@ class DashboardFragment : Fragment(), ResultsAdapter.OnItemClick {
 
     private fun initObservables() {
 
-        viewModel.results.observe(this, Observer {
-            showResults(it )
-//            when (it) {
-//                is Loading -> {
-//                    progress.visibility = View.VISIBLE
-//                }
-//                is ErrorIn -> {
-//                    progress.visibility = View.GONE
-//                }
-//                is Success<*> -> {
-//                    progress.visibility = View.GONE
-//                    showResults((it.data as List<ImageModel>))
-//                }
-//            }
+        viewModel.result.observe(this, Observer {
+            when (it) {
+                is Loading -> {
+                    progress.visibility = View.VISIBLE
+                }
+                is ErrorIn -> {
+                    progress.visibility = View.GONE
+                }
+                is Success<*> -> {
+                    progress.visibility = View.GONE
+                    showResults((it.data as List<ImageModel>))
+                }
+            }
         })
 
         //do search when typing on search bar stopped automatically
@@ -84,7 +85,7 @@ class DashboardFragment : Fragment(), ResultsAdapter.OnItemClick {
             .debounce(SEARCH_DO_DELAY, TimeUnit.MILLISECONDS)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
-                viewModel.searchNew(it.toString())
+                viewModel.search(it.toString())
             }
     }
 
