@@ -1,7 +1,6 @@
 package com.pixabay.ui.dashboard
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation.findNavController
 import com.jakewharton.rxbinding2.widget.RxTextView
+import com.jakewharton.rxbinding2.widget.textChanges
 import com.pixabay.R
 import com.pixabay.utils.Cons.Companion.ITEM_BUNDLE
 import com.pixabay.utils.entities.ImageModel
@@ -28,7 +28,6 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class DashboardFragment : Fragment(), ResultsAdapter.OnItemClick {
-
     @Inject
     lateinit var adapter: ResultsAdapter
 
@@ -51,7 +50,6 @@ class DashboardFragment : Fragment(), ResultsAdapter.OnItemClick {
         AndroidSupportInjection.inject(this)
         viewModel =
             ViewModelProviders.of(this, viewModelFactory).get(DashboardViewModel::class.java)
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -72,7 +70,7 @@ class DashboardFragment : Fragment(), ResultsAdapter.OnItemClick {
                 is ErrorIn -> {
                     progress.visibility = View.GONE
                 }
-                is Success<*> -> {
+                is Success -> {
                     progress.visibility = View.GONE
                     showResults((it.data as List<ImageModel>))
                 }

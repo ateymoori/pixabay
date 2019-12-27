@@ -7,8 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.pixabay.utils.ImageLoader
 import com.pixabay.R
 import com.pixabay.utils.entities.ImageModel
 import com.pixabay.utils.tools.listen
@@ -19,6 +18,10 @@ class ResultsAdapter @Inject constructor() :
     RecyclerView.Adapter<ResultsAdapter.Holder>() {
     private lateinit var ctx: Context
     lateinit var itemClick: OnItemClick
+
+    @Inject
+    lateinit var imageLoader: ImageLoader
+
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): Holder {
         ctx = parent.context
         return Holder(
@@ -38,26 +41,25 @@ class ResultsAdapter @Inject constructor() :
             notifyDataSetChanged()
         }
 
-
     interface OnItemClick {
         fun onItemClick(item: ImageModel)
     }
 
-
     override fun onBindViewHolder(holder: Holder, position: Int) {
         val item = items[position]
-        holder.username.text = item.user
-        Glide.with(ctx).load(
-            item.webformatURL
-        ).placeholder(R.drawable.test)
-            .diskCacheStrategy( DiskCacheStrategy.ALL )
-            .into(holder.img)
 
-        Glide.with(ctx).load(
-            item.userImageURL
-        ).placeholder(R.drawable.ic_person_black)
-            .diskCacheStrategy( DiskCacheStrategy.ALL )
-            .into(holder.avatar)
+        holder.username.text = item.user
+
+        imageLoader.load(
+            preLoadUrl = item.previewURL,
+            url = item.webformatURL,
+            imageView = holder.img
+        )
+
+        imageLoader.load(
+            url = item.userImageURL,
+            imageView = holder.avatar
+        )
 
     }
 

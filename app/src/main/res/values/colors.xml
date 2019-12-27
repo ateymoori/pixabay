@@ -6,6 +6,7 @@
     <color name="transparent">#00ffffff</color>
     <color name="almostWhite">#BAFFFFFF</color>
     <color name="white">#fff</color>
-    <color name="almostBlack">#303030</color>
+    <color name="almostBlack">#0F0F0F</color>
+    <color name="darkGray">#303030</color>
     <color name="gray">#727070</color>
 </resources>
