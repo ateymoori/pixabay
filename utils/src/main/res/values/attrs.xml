@@ -11,7 +11,13 @@
 
     </declare-styleable>
 
-    <declare-styleable name="PrefixCurrencyEditText">
-        <attr name="isMoney" format="boolean" />
+    <declare-styleable name="ViewCountsView">
+        <attr name="count" format="integer" />
+        <attr name="type" format="enum">
+            <enum name="EYE" value="0" />
+            <enum name="HEART" value="1" />
+        </attr>
     </declare-styleable>
+
+
 </resources>

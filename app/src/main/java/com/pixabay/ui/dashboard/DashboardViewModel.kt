@@ -5,28 +5,25 @@ import androidx.lifecycle.viewModelScope
 import com.pixabay.repo.repo.MainRepo
 import com.pixabay.utils.Cons.Companion.DEFAULT_SEARCH_WORD
 import com.pixabay.utils.base.BaseViewModel
-import com.pixabay.utils.entities.ImageModel
-import com.pixabay.utils.entities.ResponseModel
 import com.pixabay.utils.models.Loading
 import com.pixabay.utils.models.Response
 import com.pixabay.utils.models.Success
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class DashboardViewModel @Inject constructor(
     private val mainRepo: MainRepo
 ) :
-    BaseViewModel() {
+    BaseViewModel<DashboardContract>() {
 
-    val result = MutableLiveData<Response>()
+    val result = MutableLiveData<Response<Any?>>()
 
-    init {
-        search(DEFAULT_SEARCH_WORD)
+    override fun onViewCreated() {
+        super.onViewCreated()
+        setTag(DEFAULT_SEARCH_WORD)
     }
 
+    //using Coroutine for handle threads
     fun search(word: String) {
         viewModelScope.launch {
             result.value = Loading(null)
@@ -34,4 +31,9 @@ class DashboardViewModel @Inject constructor(
         }
     }
 
+    //navigator is WeakReference to ViewLayer
+    //it's just a sample to showing how to connect presenter/ViewModel layer to view with WeakReference
+    fun setTag(tag: String) {
+        navigator?.enterSearchWord(tag)
+    }
 }

@@ -24,10 +24,6 @@
         app:layout_constraintGuide_percent="0.973236" />
 
 
-
-
-
-
     <androidx.cardview.widget.CardView
         android:id="@+id/searchContainer"
         android:layout_width="0dp"
@@ -63,7 +59,7 @@
         android:elevation="@dimen/_4sdp"
         android:id="@+id/searchBar"
         android:gravity="center"
-        android:hint="Enter words to search"
+        android:hint="@string/enter_words_to_search"
         android:textSize="@dimen/_12ssp"
         app:layout_constraintBottom_toBottomOf="@+id/searchContainer"
         app:layout_constraintEnd_toEndOf="@+id/searchContainer"

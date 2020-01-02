@@ -11,15 +11,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation.findNavController
 import com.jakewharton.rxbinding2.widget.RxTextView
-import com.jakewharton.rxbinding2.widget.textChanges
 import com.pixabay.R
 import com.pixabay.utils.Cons.Companion.ITEM_BUNDLE
 import com.pixabay.utils.entities.ImageModel
 import com.pixabay.utils.Cons.Companion.MIN_SEARCH_WORD_COUNT
 import com.pixabay.utils.Cons.Companion.SEARCH_DO_DELAY
+import com.pixabay.utils.adapters.ResultsAdapter
 import com.pixabay.utils.models.ErrorIn
 import com.pixabay.utils.models.Loading
 import com.pixabay.utils.models.Success
+import com.pixabay.utils.tools.toast
 import dagger.android.support.AndroidSupportInjection
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -27,7 +28,7 @@ import kotlinx.android.synthetic.main.fragment_dashboard.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
-class DashboardFragment : Fragment(), ResultsAdapter.OnItemClick {
+class DashboardFragment : Fragment(), DashboardContract, ResultsAdapter.OnItemClick {
     @Inject
     lateinit var adapter: ResultsAdapter
 
@@ -48,18 +49,23 @@ class DashboardFragment : Fragment(), ResultsAdapter.OnItemClick {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AndroidSupportInjection.inject(this)
-        viewModel =
-            ViewModelProviders.of(this, viewModelFactory).get(DashboardViewModel::class.java)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        activity?.run {
+            viewModel =
+                ViewModelProviders.of(this, viewModelFactory).get(DashboardViewModel::class.java)
+                    .also {
+                        it.navigator = this@DashboardFragment
+                    }
+            viewModel.onViewCreated()
+        }
         results.adapter = adapter.also { it.itemClick = this }
-
         initObservables()
     }
 
+    @Suppress("UNCHECKED_CAST")
     private fun initObservables() {
 
         viewModel.result.observe(this, Observer {
@@ -77,7 +83,7 @@ class DashboardFragment : Fragment(), ResultsAdapter.OnItemClick {
             }
         })
 
-        //do search when typing on search bar stopped automatically
+        //do search automatically by typing in search field
         compositeDisposable = RxTextView.textChanges(searchBar)
             .skip(MIN_SEARCH_WORD_COUNT)
             .debounce(SEARCH_DO_DELAY, TimeUnit.MILLISECONDS)
@@ -87,13 +93,21 @@ class DashboardFragment : Fragment(), ResultsAdapter.OnItemClick {
             }
     }
 
+    //do search manually
+    override fun enterSearchWord(word: String) {
+        searchBar.setText(word)
+        viewModel.search(word)
+    }
+
     private fun showResults(hits: List<ImageModel>) {
         adapter.items = hits
     }
 
     override fun onItemClick(item: ImageModel) {
-        val bundle = bundleOf(ITEM_BUNDLE to item)
-        findNavController(results).navigate(R.id.action_dashboardFragment_to_detailFragment, bundle)
+        findNavController(results).navigate(
+            R.id.action_dashboardFragment_to_detailFragment,
+            bundleOf(ITEM_BUNDLE to item)
+        )
     }
 
     override fun onStop() {
@@ -101,4 +115,6 @@ class DashboardFragment : Fragment(), ResultsAdapter.OnItemClick {
         if (!compositeDisposable.isDisposed)
             compositeDisposable.dispose()
     }
+
+
 }

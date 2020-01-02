@@ -1,4 +1,4 @@
-package com.pixabay.ui.dashboard
+package com.pixabay.utils.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -11,6 +11,7 @@ import com.pixabay.utils.ImageLoader
 import com.pixabay.R
 import com.pixabay.utils.entities.ImageModel
 import com.pixabay.utils.tools.listen
+import com.pixabay.utils.views.ViewCountsView
 import kotlinx.android.synthetic.main.list_item.view.*
 import javax.inject.Inject
 
@@ -49,6 +50,9 @@ class ResultsAdapter @Inject constructor() :
         val item = items[position]
 
         holder.username.text = item.user
+        holder.tags.text = item.tags
+        holder.viewsCount.setCount(item.views)
+        holder.favoritesCount.setCount(item.favorites)
 
         imageLoader.load(
             preLoadUrl = item.previewURL,
@@ -63,7 +67,6 @@ class ResultsAdapter @Inject constructor() :
 
     }
 
-
     override fun getItemCount(): Int {
         return items.size
     }
@@ -72,6 +75,9 @@ class ResultsAdapter @Inject constructor() :
         val img: ImageView = view.img
         val avatar: ImageView = view.avatar
         val username: TextView = view.username
+        val tags: TextView = view.tags
+        val viewsCount: ViewCountsView = view.viewsCount
+        val favoritesCount: ViewCountsView = view.favoritesCount
     }
 
 }

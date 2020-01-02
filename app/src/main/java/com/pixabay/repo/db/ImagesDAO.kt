@@ -22,7 +22,11 @@ interface ImagesDAO {
 
 
     @Query("SELECT * FROM images ")
-    fun getAll(): Single<List<ImageModel>>
+    fun getAll():  List<ImageModel>
+
+
+    @Query("DELETE FROM images ")
+    fun removeAll()
 
 
 }
