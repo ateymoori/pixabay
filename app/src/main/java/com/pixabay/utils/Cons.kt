@@ -13,7 +13,7 @@ class Cons {
 
         //"all", "photo", "illustration", "vector"
         const val IMAGES_TYPE = "photo"
-        val DEFAULT_SEARCH_WORD = listOf("cat", "car", "galaxy", "cat", "girl", "child").random()
+        val DEFAULT_SEARCH_WORD = listOf("fruits").random()
         const val DB_NAME = "pixabay.db"
 
         const val ITEM_BUNDLE = "item"

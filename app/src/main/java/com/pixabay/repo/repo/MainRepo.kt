@@ -8,6 +8,7 @@ import javax.inject.Inject
 class MainRepo @Inject
 constructor(private val remoteRepo: RemoteRepo, private val dbRepo: DBRepo) {
 
+    //if remote repo get error in rest connection, then Database will check to return cached data
     suspend fun newSearch(word: String): List<ImageModel> {
         return try {
             val remoteResults = remoteRepo.searchImages(word).hits

@@ -15,7 +15,7 @@ import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
-class ApplicationModule {
+open class ApplicationModule {
 
     @Singleton
     @Provides

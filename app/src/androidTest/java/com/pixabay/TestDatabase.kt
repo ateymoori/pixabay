@@ -72,6 +72,7 @@ open class TestDatabase {
 
     @After
     fun closeDb() {
+        dao.removeAll()
         database.close()
     }
 
