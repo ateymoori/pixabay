@@ -3,6 +3,8 @@
   
 <img src="http://devcast.ir/pixabay/icon.png" alt="Android Architecture " width=200 />  
   
+<a href="http://devcast.ir/pixabay/pixabay.apk">Download sample APK</a>
+  
 This repository contains a sample Android application that implements MVVM Android architecture component using:  
     Kotlin, LiveData, Android Navigation Component(single Activity), ViewModel, Repository pattern, Observable Pattern, Room, Dagger, Retrofit
 
@@ -14,7 +16,7 @@ This repository contains a sample Android application that implements MVVM Andro
   
 <img src="http://devcast.ir/pixabay/weak.png" alt="Android Architecture " width=600 />  
   
-  
+
 
 
   
