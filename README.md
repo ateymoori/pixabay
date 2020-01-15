@@ -10,13 +10,13 @@
 This repository contains a sample Android application that implements MVVM Android architecture component using:  
     Kotlin, LiveData, Android Navigation Component(single Activity), ViewModel, Repository pattern, Observable Pattern, Room, Dagger, Retrofit
 
-<img src="http://devcast.ir/pixabay/dash.png" alt="Android Architecture " width=220 /> 
+<img src="files/pixa_shot.png?raw=true" alt="Android Architecture " width=220 /> 
 
 
-<img src="http://devcast.ir/pixabay/schema.png" alt="Android Architecture " width=600 />
+<img src="files/pixa_flow1.png?raw=true" alt="Android Architecture " width=600 />
 
   
-<img src="http://devcast.ir/pixabay/weak.png" alt="Android Architecture " width=600 />  
+<img src="files/pixa_flow2.png?raw=true" alt="Android Architecture " width=600 />  
   
 
 
