@@ -29,7 +29,10 @@ class DashboardViewModel @Inject constructor(
             result.value = Loading(null)
             result.value = Success(data = mainRepo.newSearch(word))
         }
+
     }
+
+
 
     //navigator is WeakReference to ViewLayer
     //it's just a sample to showing how to connect presenter/ViewModel layer to view with WeakReference
