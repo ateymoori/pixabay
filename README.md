@@ -1,8 +1,8 @@
 
 # Android Architecture Component (MVVM): Sample Pixabay App  
  
-![Alt text](files/pixa_icon.png?raw=true "Face Detection Flow" =200x200))
- 
+ <img src="files/pixa_icon.png?raw=true" alt="Android Architecture " width=200 />  
+
   
 ![Download sample APK](files/pixabay.apk?raw=true )
 
