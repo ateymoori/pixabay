@@ -110,8 +110,8 @@ class DashboardFragment : Fragment(), DashboardContract, ResultsAdapter.OnItemCl
         )
     }
 
-    override fun onStop() {
-        super.onStop()
+    override fun onDestroy() {
+        super.onDestroy()
         if (!compositeDisposable.isDisposed)
             compositeDisposable.dispose()
     }
