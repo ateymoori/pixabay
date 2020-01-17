@@ -15,8 +15,6 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".ui.container.MainActivity">
 
-        </activity>
-        <activity android:name=".ui.TestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

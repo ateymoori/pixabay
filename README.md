@@ -1,12 +1,12 @@
 
 # Android Architecture Component (MVVM): Sample Pixabay App  
  
- <img src="files/pixa_icon.png?raw=true" alt="Android Architecture " width=200 />  
+<img src="files/pixa_icon.png?raw=true" alt="Android Architecture " width=200 />  
 
   
 ![Download sample APK](files/pixabay.apk?raw=true )
 
-  
+
 This repository contains a sample Android application that implements MVVM Android architecture component using:  
     Kotlin, LiveData, Android Navigation Component(single Activity), ViewModel, Repository pattern, Observable Pattern, Room, Dagger, Retrofit
 

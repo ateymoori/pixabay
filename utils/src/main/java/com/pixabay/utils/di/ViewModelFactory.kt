@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModelProvider
 import javax.inject.Provider
 import javax.inject.Singleton
 
-
 @Suppress("UNCHECKED_CAST")
 @Singleton
 class ViewModelFactory @Inject
