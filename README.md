@@ -37,6 +37,11 @@ This repository contains a sample Android application that implements MVVM Andro
 * WeakReference
 * Dagger and Retrofit
 
+Version 1.0.3 *(Jan 29, 2020)*  
+----------------------------  
+  
+ * Bug fix in ViewModel (Coroutines thread)
+
 Version 1.0.2 *(Jan 2, 2020)*  
 ----------------------------  
   
