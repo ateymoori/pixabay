@@ -6,7 +6,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.pixabay.repo.db.ImagesDAO
 import com.pixabay.utils.DBHelper
-import com.pixabay.utils.entities.ImageModel
+import com.pixabay.domain.entities.ImageModel
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -18,7 +18,7 @@ open class TestDatabase {
 
     private lateinit var database: DBHelper
     private lateinit var dao: ImagesDAO
-    lateinit var context: Context
+    private lateinit var context: Context
 
     @Before
     fun initDb() {

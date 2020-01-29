@@ -9,8 +9,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.pixabay.utils.ImageLoader
 import com.pixabay.R
-import com.pixabay.utils.entities.ImageModel
+import com.pixabay.domain.entities.ImageModel
 import com.pixabay.utils.tools.listen
+import com.pixabay.utils.tools.log
 import com.pixabay.utils.views.ViewCountsView
 import kotlinx.android.synthetic.main.list_item.view.*
 import javax.inject.Inject
@@ -48,7 +49,6 @@ class ResultsAdapter @Inject constructor() :
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         val item = items[position]
-
         holder.username.text = item.user
         holder.tags.text = item.tags
         holder.viewsCount.setCount(item.views)

@@ -1,6 +1,6 @@
 package com.pixabay.repo.rest
 
-import com.pixabay.utils.entities.ResponseModel
+import com.pixabay.domain.entities.ResponseModel
 import retrofit2.http.*
 
 interface RestService {

@@ -12,7 +12,7 @@ import com.pixabay.ui.dashboard.DashboardViewModel
 import com.pixabay.utils.Cons.Companion.ITEM_BUNDLE
 import com.pixabay.utils.Cons.Companion.TAGS_DELIMITER
 import com.pixabay.utils.adapters.TagsAdapter
-import com.pixabay.utils.entities.ImageModel
+import com.pixabay.domain.entities.ImageModel
 import com.pixabay.utils.views.ExpandedBottomSheetDialog
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.fragment_detail.*

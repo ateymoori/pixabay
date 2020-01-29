@@ -4,8 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.pixabay.utils.entities.ImageModel
-import io.reactivex.Single
+import com.pixabay.domain.entities.ImageModel
 
 
 @Dao

@@ -1,6 +1,7 @@
 package com.pixabay.repo.repo
 
-import com.pixabay.utils.entities.ImageModel
+import com.pixabay.domain.entities.ImageModel
+import com.pixabay.utils.tools.log
 import java.lang.Exception
 import java.net.UnknownHostException
 import javax.inject.Inject

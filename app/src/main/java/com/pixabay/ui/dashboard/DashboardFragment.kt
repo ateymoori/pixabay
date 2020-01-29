@@ -13,14 +13,14 @@ import androidx.navigation.Navigation.findNavController
 import com.jakewharton.rxbinding2.widget.RxTextView
 import com.pixabay.R
 import com.pixabay.utils.Cons.Companion.ITEM_BUNDLE
-import com.pixabay.utils.entities.ImageModel
+import com.pixabay.domain.entities.ImageModel
 import com.pixabay.utils.Cons.Companion.MIN_SEARCH_WORD_COUNT
 import com.pixabay.utils.Cons.Companion.SEARCH_DO_DELAY
 import com.pixabay.utils.adapters.ResultsAdapter
 import com.pixabay.utils.models.ErrorIn
 import com.pixabay.utils.models.Loading
 import com.pixabay.utils.models.Success
-import com.pixabay.utils.tools.toast
+import com.pixabay.utils.tools.log
 import dagger.android.support.AndroidSupportInjection
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -82,7 +82,6 @@ class DashboardFragment : Fragment(), DashboardContract, ResultsAdapter.OnItemCl
                 }
             }
         })
-
         //do search automatically by typing in search field
         compositeDisposable = RxTextView.textChanges(searchBar)
             .skip(MIN_SEARCH_WORD_COUNT)

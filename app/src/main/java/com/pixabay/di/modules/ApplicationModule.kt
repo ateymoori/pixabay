@@ -57,7 +57,6 @@ open class ApplicationModule {
         return interceptor
     }
 
-
     @Singleton
     @Provides
     fun provideGSONConverterFactory(): GsonConverterFactory {
@@ -76,8 +75,5 @@ open class ApplicationModule {
     fun getMainInterface(retrofit: Retrofit): RestService {
         return retrofit.create(RestService::class.java)
     }
-
-
-
 
 }

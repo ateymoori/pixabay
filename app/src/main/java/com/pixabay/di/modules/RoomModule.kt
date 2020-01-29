@@ -22,7 +22,7 @@ class RoomModule {
             context,
             DBHelper::class.java, dbName
         )
-           // .allowMainThreadQueries()
+            //.allowMainThreadQueries()
             .fallbackToDestructiveMigration()
             .build()
     }

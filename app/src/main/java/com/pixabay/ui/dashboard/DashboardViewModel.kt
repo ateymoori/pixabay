@@ -8,7 +8,9 @@ import com.pixabay.utils.base.BaseViewModel
 import com.pixabay.utils.models.Loading
 import com.pixabay.utils.models.Response
 import com.pixabay.utils.models.Success
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class DashboardViewModel @Inject constructor(
@@ -23,20 +25,20 @@ class DashboardViewModel @Inject constructor(
         setTag(DEFAULT_SEARCH_WORD)
     }
 
-    //using Coroutine for handle threads
+    //using Coroutines for handle threads
     fun search(word: String) {
         viewModelScope.launch {
             result.value = Loading(null)
-            result.value = Success(data = mainRepo.newSearch(word))
+            result.value = withContext(Dispatchers.IO) {
+                Success(data = mainRepo.newSearch(word))
+            }
         }
-
     }
-
-
 
     //navigator is WeakReference to ViewLayer
     //it's just a sample to showing how to connect presenter/ViewModel layer to view with WeakReference
     fun setTag(tag: String) {
         navigator?.enterSearchWord(tag)
     }
+
 }

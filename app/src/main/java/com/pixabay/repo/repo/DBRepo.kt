@@ -1,7 +1,7 @@
 package com.pixabay.repo.repo
 
 import com.pixabay.repo.db.ImagesDAO
-import com.pixabay.utils.entities.ImageModel
+import com.pixabay.domain.entities.ImageModel
 import javax.inject.Inject
 
 class DBRepo @Inject
